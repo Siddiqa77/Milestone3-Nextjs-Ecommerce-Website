@@ -45,7 +45,7 @@ const ProductList = () => {
           <p className="text-gray-700 mb-2">{product.description}</p>
           <span className="text-lg font-bold">${product.price}</span>
           <Link href={`/product/${product.id}`}>
-            <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 ml-10">
+            <button className="mt-4 px-4 py-2 inline-flex md:px-10 md:py-4 bg-[#B88E2F] poppins text-[#fff] text-[16px] font-medium rounded-sm hover:bg-amber-700  hover:font-bold ml-10">
               View Details
             </button>
           </Link>
