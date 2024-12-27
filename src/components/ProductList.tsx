@@ -1,5 +1,6 @@
 "use client"
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 type Product = {
@@ -43,6 +44,11 @@ const ProductList = () => {
           <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
           <p className="text-gray-700 mb-2">{product.description}</p>
           <span className="text-lg font-bold">${product.price}</span>
+          <Link href={`/product/${product.id}`}>
+            <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 ml-10">
+              View Details
+            </button>
+          </Link>
         </div>
       ))}
     </div>

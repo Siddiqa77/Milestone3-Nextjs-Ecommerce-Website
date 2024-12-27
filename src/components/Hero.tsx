@@ -1,5 +1,6 @@
 // components/HeroContent.tsx
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 
@@ -32,7 +33,7 @@ const Hero  = () => {
             tellus, luctus nec ullamcorper mattis.
           </p>
           <button className="px-8 md:px-10 py-3 md:py-4 bg-[#B88E2F] poppins text-[#fff] text-sm font-medium rounded-sm hover:bg-amber-700  hover:font-bold">
-            BUY NOW
+          <Link href="/shop">  BUY NOW</Link>
           </button>
         </div>
         
