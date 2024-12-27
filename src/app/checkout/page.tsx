@@ -12,7 +12,7 @@ interface CheckoutItem {
 }
 
 export default function Checkout() {
-  const [cart, setCart] = useState<CheckoutItem[]>([
+  const [cart] = useState<CheckoutItem[]>([
     {
       id: 1,
       name: "Product 1",
