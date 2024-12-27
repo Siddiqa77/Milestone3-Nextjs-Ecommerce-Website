@@ -8,7 +8,7 @@ type Product = {
   name: string;
   price: number;
   description: string;
-  image: string;
+  thumbnail: string;
 };
 
 const ProductList = () => {
@@ -31,7 +31,7 @@ const ProductList = () => {
         <div key={product.id} className="border p-4 rounded-lg shadow-lg w-[350px]">
           
           <Image 
-            src={product.image} 
+            src={product.thumbnail} 
             alt={product.name} 
             width={350} 
             height={300}
