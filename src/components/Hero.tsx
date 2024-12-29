@@ -12,7 +12,7 @@ const Hero  = () => {
       <div className="absolute inset-0">
         {/* Full-screen Background Image */}
         <Image
-          src="/hero1.png"
+          src="/heromainpic.png"
           alt="Decorative Background"
           width={1500}
           height={300}

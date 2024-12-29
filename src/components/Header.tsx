@@ -61,7 +61,7 @@ const Header = () => {
 
           {/* Cart */}
           <div className="flex gap-3">
-          <Link href="/cart">  <FiShoppingCart className="w-5 h-5" /></Link>
+          <Link href="">  <FiShoppingCart className="w-5 h-5" /></Link>
             <GoBell className="w-5 h-5" />
           </div>
 
