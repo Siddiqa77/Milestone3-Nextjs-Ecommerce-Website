@@ -21,9 +21,14 @@ const ProductDetails = () => {
   useEffect(() => {
     if (id) {
       const fetchProduct = async () => {
-        const res = await fetch(`https://dummyjson.com/products/${id}`);
-        const data = await res.json();
-        setProduct(data);
+        try {
+          const res = await fetch(`https://dummyjson.com/products/${id}`);
+          if (!res.ok) throw new Error("Failed to fetch product.");
+          const data = await res.json();
+          setProduct(data);
+        } catch (error) {
+          console.error("Error fetching product:", error);
+        }
       };
 
       fetchProduct();
@@ -32,9 +37,11 @@ const ProductDetails = () => {
 
   const addToCart = (product: Product) => {
     setCart((prevCart) => [...prevCart, product]);
-    // alert(`${product.title} has been added to the cart!`);
     console.log(`${product.title} has been added to the cart!`);
   };
+
+  // Debugging cart contents
+  console.log("Cart contents:", cart);
 
   if (!product) return <div>Loading...</div>;
 
@@ -46,8 +53,8 @@ const ProductDetails = () => {
             <div className="flex flex-row gap-2">
               <div className="flex-1">
                 <Image
-                  src={product.thumbnail}
-                  alt={product.name}
+                  src={product.thumbnail || "/placeholder-image.png"}
+                  alt={product.name || "Product Image"}
                   width={300}
                   height={400}
                   className="w-full h-[700px] object-cover rounded-lg"
@@ -85,11 +92,27 @@ const ProductDetails = () => {
                 <button
                   type="button"
                   onClick={() => addToCart(product)}
-                  className="px-4 py-3 w-[45%] borderinline-flex md:px-10 md:py-4 bg-[#B88E2F] poppins text-[#fff] text-[16px] font-medium rounded-sm hover:bg-amber-700 hover:font-bold"
+                  className="px-4 py-3 w-[45%] md:px-10 md:py-4 bg-[#B88E2F] text-white text-[16px] font-medium rounded-sm hover:bg-amber-700 hover:font-bold"
                 >
                   Add To Cart
                 </button>
               </div>
+            </div>
+
+            {/* Render Cart Details */}
+            <div className="mt-8">
+              <h2 className="text-xl font-semibold text-gray-800">Cart</h2>
+              {cart.length > 0 ? (
+                <ul className="mt-4">
+                  {cart.map((item, index) => (
+                    <li key={index} className="text-sm text-gray-700">
+                      {item.title} - ${item.price}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-gray-500">No items in the cart yet.</p>
+              )}
             </div>
           </div>
         </div>
