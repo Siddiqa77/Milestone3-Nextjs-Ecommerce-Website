@@ -17,8 +17,7 @@
 // export default Home
 "use client";
 
-import { useState } from "react";
-import { Cart } from "../components/Cart";
+
 import ProductList from "@/components/ProductList";
 import Bottombanner from "@/components/Bottombanner";
 import Hero from "@/components/Hero";
