@@ -1,8 +1,10 @@
+
+
 import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { CartProvider } from "@/components/CartContext";
+import { CartProvider } from "@/components/context/CartContext";
 
 
 

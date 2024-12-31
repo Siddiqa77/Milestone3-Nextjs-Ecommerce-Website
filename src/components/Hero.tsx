@@ -1,4 +1,4 @@
-// components/HeroContent.tsx
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -41,7 +41,7 @@ const Hero  = () => {
      
     </div>
     <div className="px-6 py-14 text-center">
-      <h2 className="text-[#000] text-4xl font-bold family">Latest Products</h2>
+      <h2 className="text-[#000] text-4xl font-bold family">Featured Products</h2>
       <p className="poppins">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
    </section>

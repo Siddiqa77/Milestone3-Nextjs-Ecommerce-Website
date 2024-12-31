@@ -7,6 +7,8 @@ import { GoBell } from "react-icons/go";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setCartOpen] = useState(false);
+
 
   return (
     <header className="bg-white w-full shadow-sm wrapper">
@@ -60,11 +62,18 @@ const Header = () => {
           </div>
 
           {/* Cart */}
-          <div className="flex gap-3">
-          <Link href="">  <FiShoppingCart className="w-5 h-5" /></Link>
-            <GoBell className="w-5 h-5" />
-          </div>
-
+         
+         <div className="flex gap-3">
+         <button
+          onClick={() => setCartOpen(!isCartOpen)}
+          
+        >
+        <FiShoppingCart className="w-5 h-5" />
+      
+        
+        </button>
+        <GoBell className="w-5 h-5" />
+         </div>
           {/* Hamburger Menu */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
