@@ -1,39 +1,35 @@
-"use client"
+"use client";
+
 import { useCart } from "@/components/context/CartContext";
-import { useEffect } from "react";
 
 
-export const Cart = () => {
-  const { cart, fetchCart, removeFromCart } = useCart();
 
-  useEffect(() => {
-    fetchCart();
-  }, [fetchCart]);
+const CartPage = () => {
+  const { cart } = useCart();
+
+  console.log("Cart Items: ", cart); 
+
+  if (cart.length === 0) {
+    return (
+      <div className="p-4">
+        <h1 className="text-2xl font-bold">Your Cart is Empty</h1>
+      </div>
+    );
+  }
 
   return (
-    <div className="fixed top-0 right-0 bg-white shadow-lg w-80 h-screen p-4">
-      <h2 className="text-xl font-bold">Cart</h2>
-      {cart.length === 0 ? (
-        <p className="text-gray-500">Your cart is empty.</p>
-      ) : (
-        cart.map((item) => (
-          <div
-            key={item.id}
-            className="flex justify-between items-center border-b py-2"
-          >
-            <div>
-              <h4 className="font-bold">{item.name}</h4>
-              <p>${item.price} x {item.quantity}</p>
-            </div>
-            <button
-              onClick={() => removeFromCart(item.id)}
-              className="text-red-500"
-            >
-              Remove
-            </button>
-          </div>
-        ))
-      )}
+    <div className="p-4">
+      <h1 className="text-2xl font-bold">Your Cart</h1>
+      <ul>
+        {cart.map((item) => (
+          <li key={item.id} className="border-b py-4">
+            <h2 className="text-lg font-semibold">{item.title}</h2>
+            <p>${item.price}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
+
+export default CartPage;

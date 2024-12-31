@@ -1,54 +1,60 @@
-"use client"
+"use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
-type CartItem = {
-  id: string;
-  name: string;
+type Product = {
+  id: number;
+  title: string;
   price: number;
   quantity: number;
 };
 
 type CartContextType = {
-  cart: CartItem[];
-  fetchCart: () => Promise<void>;
-  addToCart: (item: CartItem) => Promise<void>;
-  removeFromCart: (id: string) => Promise<void>;
+  cart: Product[];
+  addToCart: (product: Product) => void;
+  increaseQuantity: (productId: number) => void;
+  decreaseQuantity: (productId: number) => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<Product[]>([]);
 
-  const fetchCart = async () => {
-    const response = await fetch("/api/cart");
-    const data = await response.json();
-    setCart(data);
+  const addToCart = (product: Product) => {
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find((item) => item.id === product.id);
+      if (existingProduct) {
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prevCart, { ...product, quantity: 1 }];
+    });
   };
 
-  const addToCart = async (item: CartItem) => {
-    const response = await fetch("/api/cart", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(item),
-    });
-    const data = await response.json();
-    setCart(data.cart);
+  const increaseQuantity = (productId: number) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
   };
 
-  const removeFromCart = async (id: string) => {
-    const response = await fetch("/api/cart", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
-    });
-    const data = await response.json();
-    setCart(data.cart);
+  const decreaseQuantity = (productId: number) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
   };
 
   return (
-    <CartContext.Provider value={{ cart, fetchCart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, increaseQuantity, decreaseQuantity }}>
       {children}
     </CartContext.Provider>
   );
