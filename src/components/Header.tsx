@@ -2,13 +2,11 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { FiShoppingCart } from "react-icons/fi";
+import { FiShoppingCart, FiUsers } from "react-icons/fi";
 import { GoBell } from "react-icons/go";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isCartOpen, setCartOpen] = useState(false);
-
 
   return (
     <header className="bg-white w-full shadow-sm wrapper">
@@ -22,14 +20,18 @@ const Header = () => {
         <nav className="hidden md:flex space-x-6 lg:space-x-8 items-center">
           {["Home", "Shop", "About", "Contact"].map((link) => (
             <div key={link} className="relative group">
-             <Link
-        key={link}
-        href={link === "Home" ? "/" : `/${link.toLowerCase().replace(" ", "")}`}
-        onClick={() => setIsMenuOpen(false)}
-        className="hover:text-gray-500"
-      >
-        {link}
-      </Link>
+              <Link
+                key={link}
+                href={
+                  link === "Home"
+                    ? "/"
+                    : `/${link.toLowerCase().replace(" ", "")}`
+                }
+                onClick={() => setIsMenuOpen(false)}
+                className="hover:text-gray-500"
+              >
+                {link}
+              </Link>
               <div className="absolute bottom-[-2px] left-0 w-0 h-[2px] bg-black group-hover:w-full transition-all duration-300"></div>
             </div>
           ))}
@@ -62,18 +64,16 @@ const Header = () => {
           </div>
 
           {/* Cart */}
-         
-         <div className="flex gap-3">
-         <button
-          onClick={() => setCartOpen(!isCartOpen)}
-          
-        >
-        <FiShoppingCart className="w-5 h-5" />
-      
-        
-        </button>
-        <GoBell className="w-5 h-5" />
-         </div>
+
+          <div className="flex gap-3">
+            <Link href="/cart">
+              <button>
+                <FiShoppingCart className="w-5 h-5" />
+              </button>
+            </Link>
+            <FiUsers className="w-5 h-5" />
+            <GoBell className="w-5 h-5" />
+          </div>
           {/* Hamburger Menu */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -88,20 +88,23 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-  <div className="flex flex-col items-center text-[#000] bg-[#FFF3E3] py-4 space-y-4 md:hidden uppercase text-sm font-normal tracking-widest poppins">
-    {["Home", "Shop", "About", "Contact"].map((link) => (
-      <Link
-        key={link}
-        href={link === "Home" ? "/" : `/${link.toLowerCase().replace(" ", "")}`}
-        onClick={() => setIsMenuOpen(false)}
-        className="hover:text-gray-500"
-      >
-        {link}
-      </Link>
-    ))}
-  </div>
-)}
-
+        <div className="flex flex-col items-center text-[#000] bg-[#FFF3E3] py-4 space-y-4 md:hidden uppercase text-sm font-normal tracking-widest poppins">
+          {["Home", "Shop", "About", "Contact"].map((link) => (
+            <Link
+              key={link}
+              href={
+                link === "Home"
+                  ? "/"
+                  : `/${link.toLowerCase().replace(" ", "")}`
+              }
+              onClick={() => setIsMenuOpen(false)}
+              className="hover:text-gray-500"
+            >
+              {link}
+            </Link>
+          ))}
+        </div>
+      )}
     </header>
   );
 };

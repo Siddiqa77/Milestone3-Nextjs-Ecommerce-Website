@@ -25,7 +25,7 @@ const About = () => {
 
       </p>
       <div className="flex justify-center">
-        <button className="inline-flex px-6 md:px-10 py-3 md:py-4 bg-[#B88E2F] poppins text-[#fff] text-[16px] font-medium rounded-sm hover:bg-amber-700  hover:font-bold">
+        <button className="inline-flex px-6 md:px-10 py-3 md:py-4 bg-[#B88E2F] poppins text-[#fff] text-[16px] font-medium rounded-sm hover:bg-amber-700  hover:font-bold transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ...">
         <Link href="/">Learn More</Link>
         </button>
        
