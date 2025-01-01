@@ -68,7 +68,7 @@ const ProductDetails = () => {
     );
 
   return (
-    <div className="p-4 font-[sans-serif]">
+    <div className="p-4 family">
       <div className="lg:max-w-6xl max-w-xl mx-auto">
         <div className="grid items-start grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="w-full lg:sticky top-0">
@@ -92,12 +92,12 @@ const ProductDetails = () => {
               <h4 className="text-gray-800 text-2xl font-bold">
                 ${product.price}
               </h4>
-              <p className="text-gray-500 ml-4 text-sm">Tax included</p>
+              <p className="text-gray-500 ml-4 text-sm">Tax included⭐⭐⭐⭐⭐</p>
             </div>
 
             <div className="flex gap-4 mt-6">
               <button className="px-4 py-2 bg-gray-100 border rounded-md hover:bg-gray-200 text-gray-800 poppins">
-                <Link href="/">Back to Home</Link>
+                <Link href="/">Back To Home</Link>
               </button>
               <button
                 onClick={() => addToCart(product)}

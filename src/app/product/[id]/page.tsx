@@ -91,7 +91,7 @@ const ProductDetails = () => {
                   ${product.price}
                 </h4>
                 <p className="text-gray-500 text-lg">
-                  <span className="text-sm ml-1.5 poppins">Tax included</span>
+                  <span className="text-sm ml-1.5 poppins">Tax included ⭐⭐⭐⭐⭐</span>
                 </p>
               </div>
             </div>
@@ -100,9 +100,9 @@ const ProductDetails = () => {
               <div className="mt-6 flex flex-wrap gap-4">
                 <button
                   type="button"
-                  className="px-4 py-3 w-[45%] border border-gray-300 bg-gray-100 hover:bg-gray-200 poppins text-gray-800 text-sm font-semibold transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..."
+                  className="px-4 py-3 w-[35%] border border-gray-300 text-[16px] font-medium bg-gray-100 hover:bg-gray-200 poppins text-gray-800  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..."
                 >
-                  <Link href="/">Back to Home</Link>
+                  <Link href="/cart">Cart</Link>
                 </button>
                 <button
                   type="button"
@@ -110,7 +110,7 @@ const ProductDetails = () => {
                     setcondition(false);
                     addToCart1();
                   }}
-                  className="px-4 py-3 w-[45%] md:px-10 md:py-4 bg-[#B88E2F] text-white text-[16px] font-medium rounded-sm poppins hover:bg-amber-700 hover:font-bold transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..."
+                  className="px-4 py-3 w-[35%] md:px-10 md:py-4 bg-[#B88E2F] text-white text-[16px] font-medium rounded-sm poppins hover:bg-amber-700 hover:font-bold transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..."
                 >
                   Add To Cart
                 </button>
